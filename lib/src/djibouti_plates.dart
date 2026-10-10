@@ -17,7 +17,7 @@ import 'djibouti_country.dart';
 /// **Under-height ink, accepted.** The ink is 77 mm tall; `glyphStyle` gives
 /// ~0.53 of the slot, so 77 would need a 145 mm slot on a 110 mm plate. The
 /// slot is the full canvas height and the ink comes out ~75% of reference.
-/// `core_plate` is unchanged.
+/// `plate_core` is unchanged.
 ///
 /// Not implemented: the FE-Schrift / Square Kufic faces (the theme's face is
 /// used); the plate prints no flag. The article gives no other categories.
