@@ -26,8 +26,8 @@ void main() {
   /// category id -> (spec, theme, space-separated sample value)
   final Map<String, (PlateSpec, PlateTheme, String)>
   cases = <String, (PlateSpec, PlateTheme, String)>{
-    'current': (DjiboutiPlates.standard, DjiboutiThemes.current, '6 8 3 D 3 0'),
-    'legacy': (DjiboutiPlates.standard, DjiboutiThemes.legacy, '6 8 3 D 3 0'),
+    'current': (DjiboutiPlates.standard, DjiboutiThemes.current, '683 D 30'),
+    'legacy': (DjiboutiPlates.standard, DjiboutiThemes.legacy, '683 D 30'),
   };
 
   for (final MapEntry<String, (PlateSpec, PlateTheme, String)> c

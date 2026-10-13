@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
 
@@ -39,6 +41,29 @@ abstract final class _Layout {
 ///
 /// Text groups: `number` (3), `letter` (1), `code` (2).
 abstract final class DjiboutiPlates {
+  static final double _spacing = max(
+    0,
+    _Layout.pitch - 0.6 * 0.72 * _Layout.slotHeight,
+  );
+
+  static PlateMirror _mirror(
+    int source,
+    int firstCell,
+    int count,
+    PlateAlphabet alphabet,
+  ) => PlateMirror(
+    source: source,
+    box: PlateBox(
+      _Layout.arabicLeft + firstCell * _Layout.pitch,
+      _Layout.slotTop,
+      count * _Layout.pitch,
+      _Layout.slotHeight,
+    ),
+    glyphHeight: _Layout.slotHeight,
+    alphabet: alphabet,
+    editable: true,
+  );
+
   static final PlateSpec standard = PlateSpec(
     id: 'dj.standard',
     country: DjiboutiCountry.djibouti,
@@ -47,13 +72,16 @@ abstract final class DjiboutiPlates {
     noPanel: true,
     panel: const PlatePanel(box: PlateBox(0, 0, 0, _Layout.height)),
     slots: <PlateSlot>[
-      ...plateRegister(
+      PlateSlot(
         alphabet: DjiboutiAlphabets.digits,
-        count: 3,
-        left: _Layout.latinLeft,
-        top: _Layout.slotTop,
-        width: _Layout.pitch,
-        height: _Layout.slotHeight,
+        box: PlateBox(
+          _Layout.latinLeft,
+          _Layout.slotTop,
+          3 * _Layout.pitch,
+          _Layout.slotHeight,
+        ),
+        length: 3,
+        spacing: _spacing,
       ),
       PlateSlot(
         alphabet: DjiboutiAlphabets.letter,
@@ -64,37 +92,28 @@ abstract final class DjiboutiPlates {
           _Layout.slotHeight,
         ),
       ),
-      ...plateRegister(
+      PlateSlot(
         alphabet: DjiboutiAlphabets.digits,
-        count: 2,
-        left: _Layout.latinLeft + 4 * _Layout.pitch,
-        top: _Layout.slotTop,
-        width: _Layout.pitch,
-        height: _Layout.slotHeight,
+        box: PlateBox(
+          _Layout.latinLeft + 4 * _Layout.pitch,
+          _Layout.slotTop,
+          2 * _Layout.pitch,
+          _Layout.slotHeight,
+        ),
+        length: 2,
+        spacing: _spacing,
       ),
     ],
     rules: const <PlateRule>[PlateRule(box: _Layout.divider)],
     mirrors: <PlateMirror>[
-      for (final (i, source) in const <int>[4, 5, 3, 0, 1, 2].indexed)
-        PlateMirror(
-          source: source,
-          box: PlateBox(
-            _Layout.arabicLeft + i * _Layout.pitch,
-            _Layout.slotTop,
-            _Layout.pitch,
-            _Layout.slotHeight,
-          ),
-          glyphHeight: _Layout.slotHeight,
-          alphabet: source == 3
-              ? DjiboutiAlphabets.letterArabic
-              : DjiboutiAlphabets.arabicDigits,
-          editable: true,
-        ),
+      _mirror(2, 0, 2, DjiboutiAlphabets.arabicDigits),
+      _mirror(1, 2, 1, DjiboutiAlphabets.letterArabic),
+      _mirror(0, 3, 3, DjiboutiAlphabets.arabicDigits),
     ],
     textGroups: const <PlateTextGroup>[
-      PlateTextGroup(<int>[0, 1, 2], key: 'number'),
-      PlateTextGroup(<int>[3], key: 'letter'),
-      PlateTextGroup(<int>[4, 5], key: 'code'),
+      PlateTextGroup(<int>[0], key: 'number'),
+      PlateTextGroup(<int>[1], key: 'letter'),
+      PlateTextGroup(<int>[2], key: 'code'),
     ],
   );
 }
