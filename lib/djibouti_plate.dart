@@ -7,8 +7,8 @@ library;
 
 export 'src/djibouti_colors.dart';
 export 'src/djibouti_country.dart';
-export 'src/djibouti_themes.dart';
 export 'src/djibouti_plates.dart';
 export 'src/djibouti_serial_generator.dart';
+export 'src/djibouti_themes.dart';
 export 'src/djibouti_validators.dart';
 export 'package:plate_alphabet/plate_alphabet.dart' show DjiboutiAlphabets;

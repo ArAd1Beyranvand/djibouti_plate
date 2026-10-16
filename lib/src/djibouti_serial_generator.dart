@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:plate_core/plate_core.dart';
 
-/// Plausible values for fixtures and demos: three digits, `D`, two digits, one string per field.
+/// Plausible values for fixtures and demos: three digits, `D`, two digits.
 abstract final class DjiboutiSerialGenerator {
   static List<String?> generate(PlateSpec spec, {Random? random}) {
     final Random rnd = random ?? Random();

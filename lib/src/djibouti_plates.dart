@@ -19,7 +19,6 @@ import 'djibouti_country.dart';
 /// **Under-height ink, accepted.** The ink is 77 mm tall; `glyphStyle` gives
 /// ~0.53 of the slot, so 77 would need a 145 mm slot on a 110 mm plate. The
 /// slot is the full canvas height and the ink comes out ~75% of reference.
-/// `plate_core` is unchanged.
 ///
 /// Not implemented: the FE-Schrift / Square Kufic faces (the theme's face is
 /// used); the plate prints no flag. The article gives no other categories.
@@ -38,8 +37,6 @@ abstract final class _Layout {
 }
 
 /// Djibouti's plate: `NNN D NN`, Latin left and its Arabic mirror right.
-///
-/// Text groups: `number` (3), `letter` (1), `code` (2).
 abstract final class DjiboutiPlates {
   static final double _spacing = max(
     0,

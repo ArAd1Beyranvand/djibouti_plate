@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// Djibouti plate colours. Only the grey ink and black field are sampled (the
+/// Only the grey ink and black field are sampled (the
 /// 1990s artwork, modal pixels). The article says the current plate is black
 /// on white but offers no image of it, so [white] and [black] are plain.
 abstract final class DjiboutiColors {
