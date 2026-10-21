@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-/// Only the grey ink and black field are sampled (the
-/// 1990s artwork, modal pixels). The article says the current plate is black
-/// on white but offers no image of it, so [white] and [black] are plain.
+/// Only the grey ink and black field are sampled (1990s artwork, modal
+/// pixels). No image of the current black-on-white plate exists, so [white]
+/// and [black] are plain.
 abstract final class DjiboutiColors {
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
