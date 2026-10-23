@@ -1,7 +1,7 @@
 name: djibouti_plate
 description: "Djibouti's licence plates for the plate_core library."
 version: 0.1.0
-publish_to: none
+repository: https://github.com/ArAd1Beyranvand/djibouti_plate
 resolution: workspace
 
 environment:
