@@ -1,5 +1,5 @@
 name: djibouti_plate
-description: "Djibouti's licence plates for the plate_core library."
+description: "Djibouti's licence plates for plate_core. Includes themes, alphabets and an advisory validator."
 version: 0.1.0
 repository: https://github.com/ArAd1Beyranvand/djibouti_plate
 resolution: workspace
