@@ -38,21 +38,28 @@ abstract final class _Layout {
 
 /// Djibouti's plate: `NNN D NN`, Latin left and its Arabic mirror right.
 abstract final class DjiboutiPlates {
-  static final double _spacing = max(0, _Layout.pitch - 0.6 * 0.72 * _Layout.slotHeight);
+  static final double _spacing = max(
+    0,
+    _Layout.pitch - 0.6 * 0.72 * _Layout.slotHeight,
+  );
 
-  static PlateMirror _mirror(int source, int firstCell, int count, PlateAlphabet alphabet) =>
-      PlateMirror(
-        source: source,
-        box: PlateBox(
-          _Layout.arabicLeft + firstCell * _Layout.pitch,
-          _Layout.slotTop,
-          count * _Layout.pitch,
-          _Layout.slotHeight,
-        ),
-        glyphHeight: _Layout.slotHeight,
-        alphabet: alphabet,
-        editable: true,
-      );
+  static PlateMirror _mirror(
+    int source,
+    int firstCell,
+    int count,
+    PlateAlphabet alphabet,
+  ) => PlateMirror(
+    source: source,
+    box: PlateBox(
+      _Layout.arabicLeft + firstCell * _Layout.pitch,
+      _Layout.slotTop,
+      count * _Layout.pitch,
+      _Layout.slotHeight,
+    ),
+    glyphHeight: _Layout.slotHeight,
+    alphabet: alphabet,
+    editable: true,
+  );
 
   static final PlateSpec standard = PlateSpec(
     id: 'dj.standard',
@@ -64,7 +71,12 @@ abstract final class DjiboutiPlates {
     slots: <PlateSlot>[
       PlateSlot(
         alphabet: DjiboutiAlphabets.digits,
-        box: PlateBox(_Layout.latinLeft, _Layout.slotTop, 3 * _Layout.pitch, _Layout.slotHeight),
+        box: PlateBox(
+          _Layout.latinLeft,
+          _Layout.slotTop,
+          3 * _Layout.pitch,
+          _Layout.slotHeight,
+        ),
         length: 3,
         spacing: _spacing,
       ),
