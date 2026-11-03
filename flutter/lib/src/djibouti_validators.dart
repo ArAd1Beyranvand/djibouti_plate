@@ -1,16 +1,10 @@
 import 'package:plate_core/plate_core.dart';
 
-// TODO(py): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(ts): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(kt): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
 /// Judges a Djibouti registration: three digits, the letter `D`, two digits
 /// (`683 D 30`). The article gives no format table, so this is the one
 /// reference plate; it reports and never bars a keystroke.
 class DjiboutiValidator extends GatedPlateValidator {
-  const DjiboutiValidator();
-
-  @override
-  String get gateGroup => 'code';
+  const DjiboutiValidator() : super('code');
 
   static const String reasonNumber = 'The number is three digits.';
   static const String reasonLetter = 'The letter is D.';

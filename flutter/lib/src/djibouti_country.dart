@@ -7,7 +7,6 @@ import 'djibouti_colors.dart';
 abstract final class DjiboutiCountry {
   static const PlateCountry djibouti = PlateCountry(
     code: 'dj',
-    captionLines: <String>[],
     panelColor: DjiboutiColors.flagBlue,
     panelTextColor: DjiboutiColors.white,
   );

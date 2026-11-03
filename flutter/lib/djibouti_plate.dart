@@ -5,9 +5,6 @@
 /// validator.
 library;
 
-// TODO(py): [D5] one module `plates.countries.djibouti`; assets via importlib.resources.
-// TODO(ts): [D5] one subpath export `./countries/djibouti`; tree-shakable.
-// TODO(kt): [D5] package `countries.djibouti` in the countries module.
 export 'src/djibouti_colors.dart';
 export 'src/djibouti_country.dart';
 export 'src/djibouti_plates.dart';

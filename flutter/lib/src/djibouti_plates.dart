@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
 
@@ -23,26 +21,18 @@ import 'djibouti_country.dart';
 /// Not implemented: the FE-Schrift / Square Kufic faces (the theme's face is
 /// used); the plate prints no flag. The article gives no other categories.
 abstract final class _Layout {
-  static const double width = 520;
-  static const double height = 110;
+  static const double width = 520, height = 110;
 
-  static const double pitch = 38.9;
-  static const double latinLeft = 31.3 - pitch / 2;
+  static const double pitch = 38.9, latinLeft = 31.3 - pitch / 2;
   static const double arabicLeft = 290 - pitch / 2;
 
-  static const double slotTop = 0;
-  static const double slotHeight = height;
+  static const double slotTop = 0, slotHeight = height;
 
   static const PlateBox divider = PlateBox(255.5, 11.5, 5.7, 88.3);
 }
 
 /// Djibouti's plate: `NNN D NN`, Latin left and its Arabic mirror right.
 abstract final class DjiboutiPlates {
-  static final double _spacing = max(
-    0,
-    _Layout.pitch - 0.6 * 0.72 * _Layout.slotHeight,
-  );
-
   static PlateMirror _mirror(
     int source,
     int firstCell,
@@ -68,49 +58,22 @@ abstract final class DjiboutiPlates {
     canvasHeight: _Layout.height,
     noPanel: true,
     panel: const PlatePanel(box: PlateBox(0, 0, 0, _Layout.height)),
-    slots: <PlateSlot>[
-      PlateSlot(
-        alphabet: DjiboutiAlphabets.digits,
-        box: PlateBox(
-          _Layout.latinLeft,
-          _Layout.slotTop,
-          3 * _Layout.pitch,
-          _Layout.slotHeight,
-        ),
-        length: 3,
-        spacing: _spacing,
-      ),
-      PlateSlot(
-        alphabet: DjiboutiAlphabets.letter,
-        box: PlateBox(
-          _Layout.latinLeft + 3 * _Layout.pitch,
-          _Layout.slotTop,
-          _Layout.pitch,
-          _Layout.slotHeight,
-        ),
-      ),
-      PlateSlot(
-        alphabet: DjiboutiAlphabets.digits,
-        box: PlateBox(
-          _Layout.latinLeft + 4 * _Layout.pitch,
-          _Layout.slotTop,
-          2 * _Layout.pitch,
-          _Layout.slotHeight,
-        ),
-        length: 2,
-        spacing: _spacing,
-      ),
-    ],
+    slots: plateRow(
+      const <PlateRowItem>[
+        PlateRowRun(DjiboutiAlphabets.digits, 3, group: 'number'),
+        PlateRowRun(DjiboutiAlphabets.letter, 1, spacing: 0, group: 'letter'),
+        PlateRowRun(DjiboutiAlphabets.digits, 2, group: 'code'),
+      ],
+      left: _Layout.latinLeft,
+      top: _Layout.slotTop,
+      height: _Layout.slotHeight,
+      pitch: _Layout.pitch,
+    ).slots,
     rules: const <PlateRule>[PlateRule(box: _Layout.divider)],
     mirrors: <PlateMirror>[
       _mirror(2, 0, 2, DjiboutiAlphabets.iranshahrDigits),
       _mirror(1, 2, 1, DjiboutiAlphabets.letterArabic),
       _mirror(0, 3, 3, DjiboutiAlphabets.iranshahrDigits),
-    ],
-    textGroups: const <PlateTextGroup>[
-      PlateTextGroup(<int>[0], key: 'number'),
-      PlateTextGroup(<int>[1], key: 'letter'),
-      PlateTextGroup(<int>[2], key: 'code'),
     ],
   );
 }
